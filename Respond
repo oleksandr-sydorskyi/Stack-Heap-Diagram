@@ -1,0 +1,56 @@
+Initial State (in main() method):
+
+Stack:
+name (points to the string "Kevin").
+list (points to an empty ArrayList).
+times (set to 10).
+Heap:
+"Kevin" (string object).
+Empty ArrayList object.
+Method Call: fill(list, name + name, times):
+
+Arguments:
+list: points to the empty ArrayList object.
+name + name: evaluates to "KevinKevin", a new string object in the heap.
+times: is 10.
+Method Call: fill(Collection<String> collection, String str, int times):
+
+Stack:
+collection: points to the ArrayList object.
+str: points to the string "KevinKevin".
+times: is 10.
+Method Call: shrink(String str):
+
+Stack:
+str: points to the string "KevinKevin".
+Heap:
+A new char[] array is created with size 5.
+The array chars contains: ['K', 'v', 'n', 'e', 'i'].
+A new string "Kvnei" is created from the chars array and stored in the heap.
+Back to fill():
+
+shrunk is now "Kvnei".
+times is recalculated as (times + shrunk.length()) / 2 = (10 + 5) / 2 = 7.
+The loop adds "Kvnei" to the ArrayList three times (since times / 2 = 3).
+Heap:
+The ArrayList now holds 3 references to the string "Kvnei".
+Return from fill():
+
+fill() returns 7.
+Back to main():
+
+The final print statement outputs 17 (times = 10 and fill() returned 7).
+Final Stack-Heap Diagram:
+Stack:
+name: points to "Kevin".
+list: points to the ArrayList object.
+times: 10 in main(), and 7 in fill().
+collection, str, times: local variables in fill().
+str in shrink(): points to "KevinKevin".
+Return value of fill(): 7.
+Heap:
+"Kevin" (string object).
+"KevinKevin" (string object).
+"Kvnei" (string object, result of the shrink() method).
+ArrayList object with 3 references to "Kvnei".
+This diagram accurately represents how variables and objects are allocated in the stack and heap, following the code execution step by step.
